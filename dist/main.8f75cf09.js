@@ -129,9 +129,9 @@ module.exports = {
     var createDiv = document.createElement('div').classList.add('question-div');
     var createQuestionParagraph = document.createElement('p').classList.add('question-paragraph');
     var createTextNode = document.createTextNode('At the site of the crashed Raptor on Kobol was a volatile situation; the Raptor was in flames and its passengers rushed to escape the wreckage. Gaius Baltar was caught behind a wall of fire. What happened that convinced him to escape?');
-    createQuestionParagraph.appendChild(createTextNode);
-    createDiv.appendChild(createQuestionParagraph);
     body.appendChild(createDiv);
+    createDiv.appendChild(createQuestionParagraph);
+    createQuestionParagraph.appendChild(createTextNode);
   }
 };
 },{}],"../js/main.js":[function(require,module,exports) {
