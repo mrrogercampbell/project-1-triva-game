@@ -11,13 +11,25 @@
 module.exports = {
     createQuestion: function createQuestion(){
         const body = document.querySelector('body')
-        const createDiv = document.createElement('div').classList.add('question-div')
-        const createQuestionParagraph = document.createElement('p').classList.add('question-paragraph')
-        const createTextNode = document.createTextNode('At the site of the crashed Raptor on Kobol was a volatile situation; the Raptor was in flames and its passengers rushed to escape the wreckage. Gaius Baltar was caught behind a wall of fire. What happened that convinced him to escape?')
+        const createDiv = document.createElement('div')
+        const createQuestionParagraph = document.createElement('p')
+        // .classList.add('question-paragraph')
+        const createTextNode = document.createTextNode('At the site of the crashed Raptor on Kobol was a volatile situation; the Raptor was in flames and its passengers rushed to escape the wreckage. Gaius Baltar was caught behind a wall of fire. What happened that convinced him to escape? ')
 
         body.appendChild(createDiv)
         createDiv.appendChild(createQuestionParagraph)
         createQuestionParagraph.appendChild(createTextNode)
     },
+
+    // createAnswerSlections: function AnswerSlections1(){
+    //     const body = document.querySelector('body')
+    //     const createDiv = document.createElement('div').classList.add('question-div')
+    //     const createQuestionParagraph = document.createElement('p').classList.add('question-paragraph')
+    //     const createTextNode = document.createTextNode('')
+        
+    //     body.appendChild(createDiv)
+    //     createDiv.appendChild(createQuestionParagraph)
+    //     createQuestionParagraph.appendChild(createTextNode)
+    // },
     
 } 
