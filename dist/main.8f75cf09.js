@@ -114,12 +114,36 @@ module.exports = {
   },
   checkAnswer: function checkAnswer(checkiftheyareright) {}
 };
+},{}],"../js/question-creator.js":[function(require,module,exports) {
+// function displayWinMessage(player){
+//     var textContainer = document.querySelector('.text-container')
+//     var paragraph = document.createElement('p')
+//     var textNode = document.createTextNode(`${ player } Wins!!`)
+//     paragraph.classList.add('createdP')
+//     paragraph.appendChild(textNode)
+//     textContainer.appendChild(paragraph)
+// }
+module.exports = {
+  createQuestion: function createQuestion() {
+    var body = document.querySelector('body');
+    var createDiv = document.createElement('div').classList.add('question-div');
+    var createQuestionParagraph = document.createElement('p').classList.add('question-paragraph');
+    var createTextNode = document.createTextNode('At the site of the crashed Raptor on Kobol was a volatile situation; the Raptor was in flames and its passengers rushed to escape the wreckage. Gaius Baltar was caught behind a wall of fire. What happened that convinced him to escape?');
+    createQuestionParagraph.appendChild(createTextNode);
+    createDiv.appendChild(createQuestionParagraph);
+    body.appendChild(createDiv);
+  }
+};
 },{}],"../js/main.js":[function(require,module,exports) {
 var messages = require("./message");
 
+var questionCreation = require('./question-creator');
+
 messages.message("hello from parcel!");
 messages.talk('fuck this is cool');
-},{"./message":"../js/message.js"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+messages.checkAnswer();
+questionCreation.createQuestion();
+},{"./message":"../js/message.js","./question-creator":"../js/question-creator.js"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
