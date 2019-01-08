@@ -114,27 +114,36 @@ module.exports = {
   }
 };
 },{}],"../js/question-creator.js":[function(require,module,exports) {
-// function displayWinMessage(player){
-//     var textContainer = document.querySelector('.text-container')
-//     var paragraph = document.createElement('p')
-//     var textNode = document.createTextNode(`${ player } Wins!!`)
-//     paragraph.classList.add('createdP')
-//     paragraph.appendChild(textNode)
-//     textContainer.appendChild(paragraph)
-// }
 module.exports = {
   createQuestion: function createQuestion() {
-    var testBody = document.querySelector('body');
+    var grabBodyTag = document.querySelector('body');
     var createDiv = document.createElement('div'); // const questionDiv = document.querySelector("#question-div")
 
     var createQuestionParagraph = document.createElement('p');
     var createTextNode = document.createTextNode('At the site of the crashed Raptor on Kobol was a volatile situation; the Raptor was in flames and its passengers rushed to escape the wreckage. Gaius Baltar was caught behind a wall of fire. What happened that convinced him to escape? ');
-    console.log(testBody);
-    testBody.appendChild(createDiv);
+    grabBodyTag.appendChild(createDiv);
     createDiv.appendChild(createQuestionParagraph);
     createDiv.classList.add('question-paragraph');
-    createQuestionParagraph.appendChild(createTextNode); // questionDiv.appendChild(createQuestionParagraph)
-  }
+    createQuestionParagraph.appendChild(createTextNode);
+    createQuestionParagraph.classList.add('question');
+    var answerBank = ["answer-1", "answer-2", "answer-3", "answer-4"];
+    answerBank.forEach(function (answer) {
+      var createAnswerButton = document.createElement("button");
+      createAnswerButton.className = "possible-answer";
+      createAnswerButton.innerHTML = answer;
+      document.body.appendChild(createAnswerButton);
+      createAnswerButton.addEventListener('click', function () {
+        console.log('Ive been clicked');
+      });
+    });
+  } // populateAnswers: function(populateAswers) {
+  //     const grabBodyTag
+  // }
+  // make it so possible answers populate onto screen
+  // addd click event to possible answers
+  // figure out logic to determin the correct answer
+  // create logic for if the wrong answer is selected
+
 };
 },{}],"../js/main.js":[function(require,module,exports) {
 var messages = require("./message");
