@@ -124,17 +124,16 @@ module.exports = {
 // }
 module.exports = {
   createQuestion: function createQuestion() {
-    var body = document.getElementsByTagName('body');
+    var testBody = document.querySelector('body');
     var createDiv = document.createElement('div'); // const questionDiv = document.querySelector("#question-div")
 
     var createQuestionParagraph = document.createElement('p');
-    var createTextNode = document.createTextNode('At the site of the crashed Raptor on Kobol was a volatile situation; the Raptor was in');
-    console.log(body);
-    body.appendChild(createDiv);
+    var createTextNode = document.createTextNode('At the site of the crashed Raptor on Kobol was a volatile situation; the Raptor was in flames and its passengers rushed to escape the wreckage. Gaius Baltar was caught behind a wall of fire. What happened that convinced him to escape? ');
+    console.log(testBody);
+    testBody.appendChild(createDiv);
     createDiv.appendChild(createQuestionParagraph);
     createDiv.classList.add('question-paragraph');
-    createQuestionParagraph.appendChild(createTextNode);
-    questionDiv.appendChild(createQuestionParagraph);
+    createQuestionParagraph.appendChild(createTextNode); // questionDiv.appendChild(createQuestionParagraph)
   }
 };
 },{}],"../js/main.js":[function(require,module,exports) {

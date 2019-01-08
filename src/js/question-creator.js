@@ -10,17 +10,17 @@
 
 module.exports = {
     createQuestion: function createQuestion(){
-        const body = document.getElementsByTagName('body')
+        const testBody = document.querySelector('body')
         const createDiv = document.createElement('div')
         // const questionDiv = document.querySelector("#question-div")
         const createQuestionParagraph = document.createElement('p')
-        const createTextNode = document.createTextNode('At the site of the crashed Raptor on Kobol was a volatile situation; the Raptor was in')
+        const createTextNode = document.createTextNode('At the site of the crashed Raptor on Kobol was a volatile situation; the Raptor was in flames and its passengers rushed to escape the wreckage. Gaius Baltar was caught behind a wall of fire. What happened that convinced him to escape? ')
 
-        console.log(body)
-        body.appendChild(createDiv)
+        console.log(testBody)
+        testBody.appendChild(createDiv)
         createDiv.appendChild(createQuestionParagraph)
         createDiv.classList.add('question-paragraph')
         createQuestionParagraph.appendChild(createTextNode)
-        questionDiv.appendChild(createQuestionParagraph)
+        // questionDiv.appendChild(createQuestionParagraph)
     }
 }
