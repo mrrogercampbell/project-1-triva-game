@@ -13,6 +13,7 @@ module.exports = {
         createQuestionParagraph.classList.add('question')
 
         const answerBank = ["answer-1", "answer-2", "answer-3", "answer-4"]
+        
         answerBank.forEach(function(answer) {
             const createAnswerButton = document.createElement("button");
             createAnswerButton.className = "possible-answer"

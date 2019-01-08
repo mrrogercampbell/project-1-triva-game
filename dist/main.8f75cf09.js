@@ -113,7 +113,7 @@ module.exports = {
     console.log('The is real news');
   }
 };
-},{}],"../js/question-creator.js":[function(require,module,exports) {
+},{}],"../js/questionCreator.js":[function(require,module,exports) {
 module.exports = {
   createQuestion: function createQuestion() {
     var grabBodyTag = document.querySelector('body');
@@ -148,13 +148,13 @@ module.exports = {
 },{}],"../js/main.js":[function(require,module,exports) {
 var messages = require("./message");
 
-var questionCreation = require('./question-creator'); // messages.message("hello from parcel!")
+var questionCreation = require('./questionCreator'); // messages.message("hello from parcel!")
 // messages.talk('fuck this is cool')
 // messages.checkAnswer()
 
 
 questionCreation.createQuestion();
-},{"./message":"../js/message.js","./question-creator":"../js/question-creator.js"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./message":"../js/message.js","./questionCreator":"../js/questionCreator.js"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
