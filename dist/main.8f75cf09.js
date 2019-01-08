@@ -111,8 +111,7 @@ module.exports = {
   },
   talk: function talk(talkFacts) {
     console.log('The is real news');
-  },
-  checkAnswer: function checkAnswer(checkiftheyareright) {}
+  }
 };
 },{}],"../js/question-creator.js":[function(require,module,exports) {
 // function displayWinMessage(player){
@@ -125,33 +124,27 @@ module.exports = {
 // }
 module.exports = {
   createQuestion: function createQuestion() {
-    var body = document.querySelector('body');
-    var createDiv = document.createElement('div');
-    var createQuestionParagraph = document.createElement('p'); // .classList.add('question-paragraph')
+    var body = document.getElementsByTagName('body');
+    var createDiv = document.createElement('div'); // const questionDiv = document.querySelector("#question-div")
 
-    var createTextNode = document.createTextNode('At the site of the crashed Raptor on Kobol was a volatile situation; the Raptor was in flames and its passengers rushed to escape the wreckage. Gaius Baltar was caught behind a wall of fire. What happened that convinced him to escape? ');
+    var createQuestionParagraph = document.createElement('p');
+    var createTextNode = document.createTextNode('At the site of the crashed Raptor on Kobol was a volatile situation; the Raptor was in');
+    console.log(body);
     body.appendChild(createDiv);
     createDiv.appendChild(createQuestionParagraph);
+    createDiv.classList.add('question-paragraph');
     createQuestionParagraph.appendChild(createTextNode);
-  } // createAnswerSlections: function AnswerSlections1(){
-  //     const body = document.querySelector('body')
-  //     const createDiv = document.createElement('div').classList.add('question-div')
-  //     const createQuestionParagraph = document.createElement('p').classList.add('question-paragraph')
-  //     const createTextNode = document.createTextNode('')
-  //     body.appendChild(createDiv)
-  //     createDiv.appendChild(createQuestionParagraph)
-  //     createQuestionParagraph.appendChild(createTextNode)
-  // },
-
+    questionDiv.appendChild(createQuestionParagraph);
+  }
 };
 },{}],"../js/main.js":[function(require,module,exports) {
 var messages = require("./message");
 
-var questionCreation = require('./question-creator');
+var questionCreation = require('./question-creator'); // messages.message("hello from parcel!")
+// messages.talk('fuck this is cool')
+// messages.checkAnswer()
 
-messages.message("hello from parcel!");
-messages.talk('fuck this is cool');
-messages.checkAnswer();
+
 questionCreation.createQuestion();
 },{"./message":"../js/message.js","./question-creator":"../js/question-creator.js"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
