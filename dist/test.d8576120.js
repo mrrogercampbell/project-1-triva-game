@@ -131,6 +131,10 @@ var battleStarTriva = [{
 var rightAnswer = battleStarTriva[0].correctAnswer;
 console.log(rightAnswer === 'c');
 
+function checkAnswer() {
+  if (rightAnswer) {}
+}
+
 function createQuestion() {
   var grabBodyTag = document.querySelector('body');
   var createDiv = document.createElement('div'); // const questionDiv = document.querySelector("#question-div")
@@ -148,10 +152,17 @@ function createAnswerBank() {
   for (var answer in battleStarTriva[0].answers) {
     var createButton = document.createElement("button");
     createButton.className = "possible-answer";
+    createButton.setAttribute('data-letter', answer);
     createButton.innerHTML = battleStarTriva[0].answers[answer];
     document.body.appendChild(createButton);
-    createButton.addEventListener('click', function () {
-      console.log('Ive been clicked');
+    createButton.addEventListener('click', function (event) {
+      var eventCheck = event.target.dataset.letter;
+
+      if (eventCheck === battleStarTriva[0].correctAnswer) {
+        nextQestionButton();
+      } else {
+        alert("Sorry nugget that's the wrong answer. \nHeres why: \n".concat(battleStarTriva[0].answerDetail));
+      }
     });
   }
 }
@@ -161,14 +172,14 @@ function nextQestionButton() {
   var createButton = document.createElement("button");
   createButton.className = 'submit-button';
   createButton.innerHTML = 'Submit Answer';
-  createButton.addEventListener('click', function () {
-    console.log('What the Frak are you thinking?! Try again!!');
-  });
+  createButton.addEventListener('click', function () {});
   document.body.appendChild(createDiv);
   document.body.appendChild(createButton);
 } // createQuestion(battleStarTriva[0].question)
-// createAnswerBank()
-//Next Question button should only show if answer is correct
+
+
+createQuestion();
+createAnswerBank(); //Next Question button should only show if answer is correct
 // nextQestionButton()
 // function createAnswerBank() {
 //     const answerBankA = ["answer-1"]

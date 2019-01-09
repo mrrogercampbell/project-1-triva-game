@@ -28,6 +28,13 @@ const battleStarTriva = [
 let rightAnswer = battleStarTriva[0].correctAnswer
 console.log (rightAnswer === 'c')
 
+function checkAnswer(){
+    if (rightAnswer ){
+
+    }
+}
+
+
 function createQuestion(){
     const grabBodyTag = document.querySelector('body')
     const createDiv = document.createElement('div')
@@ -45,10 +52,18 @@ function createAnswerBank() {
     for(let answer in battleStarTriva[0].answers) {
         const createButton = document.createElement("button")
         createButton.className = "possible-answer"
+        createButton.setAttribute('data-letter', answer)
         createButton.innerHTML = battleStarTriva[0].answers[answer]
         document.body.appendChild(createButton)
-        createButton.addEventListener('click', function(){
-            console.log('Ive been clicked')
+        createButton.addEventListener('click', function(event){
+            const eventCheck = event.target.dataset.letter
+            if (eventCheck === battleStarTriva[0].correctAnswer) {
+                nextQestionButton()
+            } else {
+                alert(`Sorry nugget that's the wrong answer. 
+Heres why: 
+${battleStarTriva[0].answerDetail}`)
+            }
         })
     }
 }
@@ -59,14 +74,15 @@ function nextQestionButton() {
     createButton.className = 'submit-button'
     createButton.innerHTML = 'Submit Answer'
     createButton.addEventListener('click', function(){
-        console.log('What the Frak are you thinking?! Try again!!')
+
     })
     document.body.appendChild(createDiv)
     document.body.appendChild(createButton)
 }
 
 // createQuestion(battleStarTriva[0].question)
-// createAnswerBank()
+createQuestion()
+createAnswerBank()
 //Next Question button should only show if answer is correct
 // nextQestionButton()
 
