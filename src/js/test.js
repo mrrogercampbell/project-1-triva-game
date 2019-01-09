@@ -24,16 +24,6 @@ const battleStarTriva = [
         answerDetail: 'Tom Zarek, the terrorist who had blown up a government building on Sagittaron was selected to represent them. Many of the fleet had felt disenfranchised by the current leadership and thought Zarek would be the one to bring change. After the announcement of his office, he contacted the fleet from the Astral Queen and thanked those who had brought him to power.'
     }
 ]
-// console.log(battleStarTriva[0].question)
-let rightAnswer = battleStarTriva[0].correctAnswer
-console.log (rightAnswer === 'c')
-
-function checkAnswer(){
-    if (rightAnswer ){
-
-    }
-}
-
 
 function createQuestion(){
     const grabBodyTag = document.querySelector('body')
@@ -47,7 +37,10 @@ function createQuestion(){
     createQuestionParagraph.appendChild(createTextNode)
     createQuestionParagraph.classList.add('question')
 }
-
+let numCorrect = 0
+let numIncorrect = 0
+const correctTally = []
+const incorrectTally = []
 function createAnswerBank() {
     for(let answer in battleStarTriva[0].answers) {
         const createButton = document.createElement("button")
@@ -58,15 +51,28 @@ function createAnswerBank() {
         createButton.addEventListener('click', function(event){
             const eventCheck = event.target.dataset.letter
             if (eventCheck === battleStarTriva[0].correctAnswer) {
+                numCorrect++
+                correctTally.push(numCorrect)
+                console.log(numCorrect)
+                console.log(correctTally)
                 nextQestionButton()
             } else {
+                numIncorrect++
+                incorrectTally.push(numIncorrect)
+                console.log(incorrectTally)
                 alert(`Sorry nugget that's the wrong answer. 
 Heres why: 
 ${battleStarTriva[0].answerDetail}`)
+            
             }
         })
     }
 }
+
+//Add a count feature so that you can keep track of the score. 
+//figure out how to better display answerDetails. 
+//Possible create a new paragraph that gives the answerDetails. 
+// After that: figuring out how to change the information over to the next question
 
 function nextQestionButton() {
     const createDiv = document.createElement('div')
