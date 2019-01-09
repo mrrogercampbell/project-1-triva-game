@@ -7,5 +7,7 @@ const myQuestions = require('./myQuestions')
 
 // messages.checkAnswer()
 
-// questionCreation.createQuestion()
-myQuestions.createQuizClass()
+questionCreation.createQuestion()
+questionCreation.createAnswerBank()
+questionCreation.createQuizClass()
+// myQuestions.createQuizClass()

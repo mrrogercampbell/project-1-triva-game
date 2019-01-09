@@ -24,13 +24,9 @@ module.exports = {
         ]
         //I want to iterate through the class yet only show one class at a time
         //to be able to show the next class (next question) player will have to answer the previous question correctly
-
-
         console.log(battleStarTriva[0].question)
         console.log(battleStarTriva[0].answers)
-
        }
-       
 }
 
 
