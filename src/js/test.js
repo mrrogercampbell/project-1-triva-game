@@ -50,25 +50,25 @@ function createAnswerBank() {
         createButton.addEventListener('click', function(){
             console.log('Ive been clicked')
         })
-        console.log(battleStarTriva[0].answers[answer])
-        // console.log(answer)
-        // console.log(battleStarTriva[i].answers[answer])
     }
 }
 
-function submitButton() {
+function nextQestionButton() {
+    const createDiv = document.createElement('div')
     const createButton = document.createElement("button")
     createButton.className = 'submit-button'
     createButton.innerHTML = 'Submit Answer'
     createButton.addEventListener('click', function(){
-        console.log('What the Frak are you think?! Try again!!')
+        console.log('What the Frak are you thinking?! Try again!!')
     })
+    document.body.appendChild(createDiv)
     document.body.appendChild(createButton)
 }
 
 createQuestion(battleStarTriva[0].question)
 createAnswerBank()
-
+//Next Question button should only show if answer is correct
+// nextQestionButton()
 //how to I go about passing the value of each possibly answer into it own button 
 
 // function createAnswerBank() {
