@@ -22,7 +22,17 @@ module.exports = {
                 answerDetail: 'Tom Zarek, the terrorist who had blown up a government building on Sagittaron was selected to represent them. Many of the fleet had felt disenfranchised by the current leadership and thought Zarek would be the one to bring change. After the announcement of his office, he contacted the fleet from the Astral Queen and thanked those who had brought him to power.'
             }
         ]
-        console.log(battleStarTriva)
+        //I want to iterate through the class yet only show one class at a time
+        //to be able to show the next class (next question) player will have to answer the previous question correctly
+
+
+        console.log(battleStarTriva[0].question)
+        console.log(battleStarTriva[0].answers)
+
        }
        
 }
+
+
+// Next step see if you can connect this information to the question creator function so that it populates each question one at a time. 
+// Might possibly be able to use this 

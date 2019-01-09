@@ -113,7 +113,7 @@ module.exports = {
     console.log('The is real news');
   }
 };
-},{}],"../js/questionCreator.js":[function(require,module,exports) {
+},{}],"../js/createQuestion.js":[function(require,module,exports) {
 module.exports = {
   createQuestion: function createQuestion() {
     var grabBodyTag = document.querySelector('body');
@@ -126,6 +126,8 @@ module.exports = {
     createDiv.classList.add('question-paragraph');
     createQuestionParagraph.appendChild(createTextNode);
     createQuestionParagraph.classList.add('question');
+  },
+  createAnswerBank: function createAnswerBank() {
     var answerBank = ["answer-1", "answer-2", "answer-3", "answer-4"];
     answerBank.forEach(function (answer) {
       var createAnswerButton = document.createElement("button");
@@ -166,23 +168,28 @@ module.exports = {
       },
       correctAnswer: 'b',
       answerDetail: 'Tom Zarek, the terrorist who had blown up a government building on Sagittaron was selected to represent them. Many of the fleet had felt disenfranchised by the current leadership and thought Zarek would be the one to bring change. After the announcement of his office, he contacted the fleet from the Astral Queen and thanked those who had brought him to power.'
-    }];
-    console.log(battleStarTriva);
-  }
+    }]; //I want to iterate through the class yet only show one class at a time
+    //to be able to show the next class (next question) player will have to answer the previous question correctly
+
+    console.log(battleStarTriva[0].question);
+    console.log(battleStarTriva[0].answers);
+  } // Next step see if you can connect this information to the question creator function so that it populates each question one at a time. 
+  // Might possibly be able to use this 
+
 };
 },{}],"../js/main.js":[function(require,module,exports) {
 var messages = require("./message");
 
-var questionCreation = require('./questionCreator');
+var questionCreation = require('./createQuestion');
 
 var myQuestions = require('./myQuestions'); // messages.message("hello from parcel!")
 // messages.talk('fuck this is cool')
 // messages.checkAnswer()
+// questionCreation.createQuestion()
 
 
-questionCreation.createQuestion();
 myQuestions.createQuizClass();
-},{"./message":"../js/message.js","./questionCreator":"../js/questionCreator.js","./myQuestions":"../js/myQuestions.js"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./message":"../js/message.js","./createQuestion":"../js/createQuestion.js","./myQuestions":"../js/myQuestions.js"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -209,7 +216,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55346" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64854" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

@@ -1,5 +1,5 @@
 const messages = require("./message")
-const questionCreation = require('./questionCreator')
+const questionCreation = require('./createQuestion')
 const myQuestions = require('./myQuestions')
 
 // messages.message("hello from parcel!")
@@ -7,5 +7,5 @@ const myQuestions = require('./myQuestions')
 
 // messages.checkAnswer()
 
-questionCreation.createQuestion()
+// questionCreation.createQuestion()
 myQuestions.createQuizClass()
