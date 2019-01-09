@@ -128,6 +128,9 @@ var battleStarTriva = [{
   answerDetail: 'Tom Zarek, the terrorist who had blown up a government building on Sagittaron was selected to represent them. Many of the fleet had felt disenfranchised by the current leadership and thought Zarek would be the one to bring change. After the announcement of his office, he contacted the fleet from the Astral Queen and thanked those who had brought him to power.'
 }]; // console.log(battleStarTriva[0].question)
 
+var rightAnswer = battleStarTriva[0].correctAnswer;
+console.log(rightAnswer === 'c');
+
 function createQuestion() {
   var grabBodyTag = document.querySelector('body');
   var createDiv = document.createElement('div'); // const questionDiv = document.querySelector("#question-div")
@@ -163,12 +166,10 @@ function nextQestionButton() {
   });
   document.body.appendChild(createDiv);
   document.body.appendChild(createButton);
-}
-
-createQuestion(battleStarTriva[0].question);
-createAnswerBank(); //Next Question button should only show if answer is correct
+} // createQuestion(battleStarTriva[0].question)
+// createAnswerBank()
+//Next Question button should only show if answer is correct
 // nextQestionButton()
-//how to I go about passing the value of each possibly answer into it own button 
 // function createAnswerBank() {
 //     const answerBankA = ["answer-1"]
 //     const answerBankB = ["answer-2"]

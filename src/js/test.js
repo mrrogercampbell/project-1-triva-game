@@ -25,8 +25,8 @@ const battleStarTriva = [
     }
 ]
 // console.log(battleStarTriva[0].question)
-
-
+let rightAnswer = battleStarTriva[0].correctAnswer
+console.log (rightAnswer === 'c')
 
 function createQuestion(){
     const grabBodyTag = document.querySelector('body')
@@ -65,11 +65,11 @@ function nextQestionButton() {
     document.body.appendChild(createButton)
 }
 
-createQuestion(battleStarTriva[0].question)
-createAnswerBank()
+// createQuestion(battleStarTriva[0].question)
+// createAnswerBank()
 //Next Question button should only show if answer is correct
 // nextQestionButton()
-//how to I go about passing the value of each possibly answer into it own button 
+
 
 // function createAnswerBank() {
 //     const answerBankA = ["answer-1"]
