@@ -1,5 +1,5 @@
 // Why wont this work? I want to global scope this function so that I can call on it below. changed name from createAnswerButton to createButton.
-const createButton = document.createElement("button")
+// const createButton = document.createElement("button")
 let i = 0
 
 const battleStarTriva = [
@@ -41,6 +41,34 @@ function createQuestion(){
     createQuestionParagraph.classList.add('question')
 }
 
+function createAnswerBank() {
+    for(let answer in battleStarTriva[0].answers) {
+        const createButton = document.createElement("button")
+        createButton.className = "possible-answer"
+        createButton.innerHTML = battleStarTriva[0].answers[answer]
+        document.body.appendChild(createButton)
+        createButton.addEventListener('click', function(){
+            console.log('Ive been clicked')
+        })
+        console.log(battleStarTriva[0].answers[answer])
+        // console.log(answer)
+        // console.log(battleStarTriva[i].answers[answer])
+    }
+}
+
+function submitButton() {
+    const createButton = document.createElement("button")
+    createButton.className = 'submit-button'
+    createButton.innerHTML = 'Submit Answer'
+    createButton.addEventListener('click', function(){
+        console.log('What the Frak are you think?! Try again!!')
+    })
+    document.body.appendChild(createButton)
+}
+
+createQuestion(battleStarTriva[0].question)
+createAnswerBank()
+
 //how to I go about passing the value of each possibly answer into it own button 
 
 // function createAnswerBank() {
@@ -79,29 +107,7 @@ function createQuestion(){
 //     })
 // }
 
-function createAnswerBank() {
-    for(let answer in battleStarTriva[0].answers) {
-        createButton.className = "possible-answer"
-        createButton.innerHTML = battleStarTriva[0].answers[answer]
-        document.body.appendChild(createButton)
-        createButton.addEventListener('click', function(){
-            console.log('Ive been clicked')
-        })
-        console.log(battleStarTriva[0].answers[answer])
-        // console.log(answer)
-        // console.log(battleStarTriva[i].answers[answer])
-    }
-}
 
-function submitButton() {
-    const createButton = document.createElement("button")
-    createButton.className = 'submit-button'
-    createButton.innerHTML = 'Submit Answer'
-    createButton.addEventListener('click', function(){
-        console.log('What the Frak are you think?! Try again!!')
-    })
-    document.body.appendChild(createButton)
-}
 
     // const createAnswerButton = document.createElement("button")
     //     createAnswerButton.className = "possible-answer"
@@ -116,9 +122,6 @@ function submitButton() {
 //clickevent when clicked incurrment up by one to control moving to next question.
 
 
-
-createQuestion(battleStarTriva[0].question)
-createAnswerBank()
 // createAnswerBank()
 // createAnswerBank(battleStarTriva[0].answers.a, battleStarTriva[0].answers.b, battleStarTriva[0].answers.a)
 // console.log(battleStarTriva[0].answers.a)
