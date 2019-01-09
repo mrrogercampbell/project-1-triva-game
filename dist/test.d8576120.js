@@ -105,6 +105,9 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   // Override the current require with this new one
   return newRequire;
 })({"../js/test.js":[function(require,module,exports) {
+// Why wont this work? I want to global scope this function so that I can call on it below. changed name from createAnswerButton to createButton.
+var createButton = document.createElement("button");
+var i = 0;
 var battleStarTriva = [{
   question: 'At the site of the crashed Raptor on Kobol was a volatile situation; the Raptor was in flames and its passengers rushed to escape the wreckage. Gaius Baltar was caught behind a wall of fire. What happened that convinced him to escape?',
   answers: {
@@ -123,49 +126,92 @@ var battleStarTriva = [{
   },
   correctAnswer: 'b',
   answerDetail: 'Tom Zarek, the terrorist who had blown up a government building on Sagittaron was selected to represent them. Many of the fleet had felt disenfranchised by the current leadership and thought Zarek would be the one to bring change. After the announcement of his office, he contacted the fleet from the Astral Queen and thanked those who had brought him to power.'
-}];
-console.log(battleStarTriva[0].question);
+}]; // console.log(battleStarTriva[0].question)
 
 function createQuestion() {
   var grabBodyTag = document.querySelector('body');
   var createDiv = document.createElement('div'); // const questionDiv = document.querySelector("#question-div")
 
-  var createQuestionParagraph = document.createElement('p'); // const createTextNode = document.createTextNode('At the site of the crashed Raptor on Kobol was a volatile situation; the Raptor was in flames and its passengers rushed to escape the wreckage. Gaius Baltar was caught behind a wall of fire. What happened that convinced him to escape? ')
-
+  var createQuestionParagraph = document.createElement('p');
   var createTextNode = document.createTextNode("".concat(battleStarTriva[0].question));
   grabBodyTag.appendChild(createDiv);
   createDiv.appendChild(createQuestionParagraph);
   createDiv.classList.add('question-paragraph');
   createQuestionParagraph.appendChild(createTextNode);
   createQuestionParagraph.classList.add('question');
-} //Use template string to added questions to functions for question and answers
-//I know that I can pass the value of questions and answers into the innerHTML.
-//but how to I go about passing the value of each possibly answer into it own button 
+} //how to I go about passing the value of each possibly answer into it own button 
+// function createAnswerBank() {
+//     const answerBankA = ["answer-1"]
+//     const answerBankB = ["answer-2"]
+//     const answerBankC = ["answer-3"]
+//     answerBankA.forEach(function() {
+//         const createAnswerButton = document.createElement("button")
+//         createAnswerButton.className = "possible-answer"
+//         createAnswerButton.innerHTML = battleStarTriva[0].answers.a
+//         document.body.appendChild(createAnswerButton)
+//         // console.log(battleStarTriva[1].question)
+//         // console.log(battleStarTriva[1].answers)
+//         createAnswerButton.addEventListener('click', function(){
+//             console.log('Ive been clicked')
+//         })
+//     })
+//     answerBankB.forEach(function() {
+//         const createAnswerButton = document.createElement("button")
+//         createAnswerButton.className = "possible-answer"
+//         createAnswerButton.innerHTML = battleStarTriva[0].answers.b
+//         document.body.appendChild(createAnswerButton)
+//         createAnswerButton.addEventListener('click', function(){
+//             console.log('Ive been clicked')
+//         })
+//     })
+//     answerBankC.forEach(function() {
+//         const createAnswerButton = document.createElement("button")
+//         createAnswerButton.className = "possible-answer"
+//         createAnswerButton.innerHTML = battleStarTriva[0].answers.c
+//         document.body.appendChild(createAnswerButton)
+//         createAnswerButton.addEventListener('click', function(){
+//             console.log('Ive been clicked')
+//         })
+//     })
+// }
 
 
 function createAnswerBank() {
-  var answerBank = ["answer-1", "answer-2", "answer-3", "answer-4"];
-  answerBank.forEach(function () {
-    var createAnswerButton = document.createElement("button");
-    createAnswerButton.className = "possible-answer";
-    createAnswerButton.innerHTML = battleStarTriva[0].answers.a;
-    document.body.appendChild(createAnswerButton);
-    createAnswerButton.addEventListener('click', function () {
+  for (var answer in battleStarTriva[0].answers) {
+    createButton.className = "possible-answer";
+    createButton.innerHTML = battleStarTriva[0].answers[answer];
+    document.body.appendChild(createButton);
+    createButton.addEventListener('click', function () {
       console.log('Ive been clicked');
-      console.log(battleStarTriva[0].question);
     });
+    console.log(battleStarTriva[0].answers[answer]); // console.log(answer)
+    // console.log(battleStarTriva[i].answers[answer])
+  }
+}
+
+function submitButton() {
+  var createButton = document.createElement("button");
+  createButton.className = 'submit-button';
+  createButton.innerHTML = 'Submit Answer';
+  createButton.addEventListener('click', function () {
+    console.log('What the Frak are you think?! Try again!!');
   });
-}
+  document.body.appendChild(createButton);
+} // const createAnswerButton = document.createElement("button")
+//     createAnswerButton.className = "possible-answer"
+//     createAnswerButton.innerHTML = battleStarTriva[0].answers.a
+//     document.body.appendChild(createAnswerButton)
+//     // console.log(battleStarTriva[0].answers)
+//     createAnswerButton.addEventListener('click', function(){
+//         console.log('Ive been clicked')
+//     })
+// }
+//clickevent when clicked incurrment up by one to control moving to next question.
 
-function testPush() {
-  var answers = [];
-  answers.push(battleStarTriva[0].answers.a);
-  console.log(answers);
-}
 
-testPush();
 createQuestion(battleStarTriva[0].question);
-createAnswerBank(); // createAnswerBank(battleStarTriva[0].answers.a, battleStarTriva[0].answers.b, battleStarTriva[0].answers.a)
+createAnswerBank(); // createAnswerBank()
+// createAnswerBank(battleStarTriva[0].answers.a, battleStarTriva[0].answers.b, battleStarTriva[0].answers.a)
 // console.log(battleStarTriva[0].answers.a)
 //create a submit button
 //attach an event listener to it 

@@ -29,8 +29,11 @@ const battleStarTriva = [
         answerDetail: 'Tom Zarek, the terrorist who had blown up a government building on Sagittaron was selected to represent them. Many of the fleet had felt disenfranchised by the current leadership and thought Zarek would be the one to bring change. After the announcement of his office, he contacted the fleet from the Astral Queen and thanked those who had brought him to power.'
     }
 ]
-console.log(battleStarTriva[0].question)
-questionCreation.createQuestion()
-questionCreation.createAnswerBank()
-questionCreation.createQuizClass()
+// console.log(battleStarTriva[0].question)
+// questionCreation.createQuestion()
+// questionCreation.createAnswerBank()
+// questionCreation.createQuizClass()
 // myQuestions.createQuizClass()
+
+
+
