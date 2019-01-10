@@ -130,6 +130,7 @@ var battleStarTriva = [{
 var createMainTag = document.createElement('main');
 var getBody = document.querySelector('body');
 var createMainContainerDiv = document.createElement('div');
+var createDiv = document.createElement('div');
 
 function loadInitalContent() {
   getBody.append(createMainTag);
@@ -141,8 +142,7 @@ function loadInitalContent() {
 }
 
 function createQuestion() {
-  var createDiv = document.createElement('div'); // const questionDiv = document.querySelector("#question-div")
-
+  // const questionDiv = document.querySelector("#question-div")
   var createQuestionParagraph = document.createElement('p');
   var createTextNode = document.createTextNode("".concat(battleStarTriva[0].question));
   createMainTag.appendChild(createDiv);
@@ -174,6 +174,7 @@ function createAnswerBank() {
         correctTally.push(numCorrect);
         console.log(numCorrect);
         console.log(correctTally);
+        alert("Well look at that the nugget actually knows something!. \nDetails: \n".concat(battleStarTriva[0].answerDetail));
         nextQestionButton(); //Want to make it so that when a button is clicked it cant be clicked again
         //found info on .disable button, yet the question is how to attach it to each created button....
       } else {
@@ -184,10 +185,18 @@ function createAnswerBank() {
       }
     });
   }
+} // This function should diplay the current tally of correct and in correct answers
+
+
+function answerTally() {
+  console.log(correctTally);
+  console.log(incorrectTally);
 } //figure out how to better display answerDetails. 
 //you need a message to display when they get the answer wrong or right
-//Possible create a new paragraph that gives the answerDetails. 
+//Possible create a new paragraph that gives the answerDetails, which show over your question.
+//or completely remove your question and just show the answerDetail then when they hit "Next Question" button load the next question 
 // After that: figuring out how to change the information over to the next question
+//At the end of the quiz show their over all score and grade them or give them a message about how they did.
 
 
 function nextQestionButton() {
@@ -196,8 +205,8 @@ function nextQestionButton() {
   createButton.className = 'next-question-button';
   createButton.innerHTML = 'Next Question';
   createButton.addEventListener('click', function () {});
-  document.body.appendChild(createDiv);
-  document.body.appendChild(createButton);
+  createMainTag.appendChild(createDiv);
+  createMainTag.appendChild(createButton);
 } // createQuestion(battleStarTriva[0].question)
 
 
