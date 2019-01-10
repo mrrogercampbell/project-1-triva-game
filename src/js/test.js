@@ -29,12 +29,13 @@ const createMainContainerDiv = document.createElement('div')
 // const appendToMainRowDiv = document.querySelector('.main-tag-row-div')
 const createDiv = document.createElement('div')
 const createButton = document.createElement("button")
+const createParagraphSpan = document.createElement(`span`)
 
 let questionCount = 0
 let numCorrect = 0
 let numIncorrect = 0
-const correctTally = []
-const incorrectTally = []
+// const correctTally = []
+// const incorrectTally = []
 
 function loadInitalContent() {
     const getBody = document.querySelector('body')
@@ -71,11 +72,12 @@ function createQuestion(){
     const createParagraph = document.createElement('p')
     const createDiv = document.createElement('div')
     //Why wont this show??
-    const createParagraphTextNode = document.createTextNode(`Correct Answer Tally: ${correctTally} Incorrect Answer Tally: ${incorrectTally}`)
+    createParagraphSpan.innerHTML = `Correct Answer Tally: ${numCorrect} Incorrect Answer Tally: ${numIncorrect}`
+    //set textNode to current then change clickevent later to change innerHTML to current numCorrect and numIncorrect.
     createDiv.className = 'tally-div mx-auto'
     createParagraph.className = 'tally-paragraph p-2 mt-3'
     
-    createParagraph.appendChild(createParagraphTextNode)
+    createParagraph.appendChild(createParagraphSpan)
     createDiv.appendChild(createParagraph)
     createMainContainerDiv.appendChild(createDiv)
 }
@@ -88,7 +90,6 @@ function createAnswerBank() {
         createButton.className = "possible-answer"
         createButton.className = "ml-5 mb-3"
         //how to make this work???
-        createButton.disabled = false
         createButton.setAttribute('data-letter', answer)
         createButton.innerHTML = battleStarTriva[questionCount].answers[answer]
 
@@ -99,9 +100,10 @@ function createAnswerBank() {
             if (eventCheck === battleStarTriva[questionCount].correctAnswer) {
                 numCorrect++
                 questionCount++
-                correctTally.push(numCorrect)
+                createButton.disabled = true
+                createParagraphSpan.innerHTML = `Correct Answer Tally: ${numCorrect} Incorrect Answer Tally: ${numIncorrect}`
+                //move logic so that you no longer need next button. Just have when they select an answer move to next question. 
                 console.log(numCorrect)
-                console.log(correctTally)
                 alert(`Well look at that the nugget actually knows something!. 
 Details: 
 ${battleStarTriva[questionCount].answerDetail}`)
@@ -112,11 +114,11 @@ ${battleStarTriva[questionCount].answerDetail}`)
             } else {
                 numIncorrect++
                 questionCount++
-                incorrectTally.push(numIncorrect)
-                console.log(incorrectTally)
+                createParagraphSpan.innerHTML = `Correct Answer Tally: ${numCorrect} Incorrect Answer Tally: ${numIncorrect}`
                 alert(`Sorry nugget that's the wrong answer. 
 Heres why: 
 ${battleStarTriva[questionCount].answerDetail}`)
+                nextQestionButton()
             
             }
         })

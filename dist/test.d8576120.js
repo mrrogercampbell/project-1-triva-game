@@ -132,11 +132,11 @@ var createMainContainerDiv = document.createElement('div'); // const appendToMai
 
 var createDiv = document.createElement('div');
 var createButton = document.createElement("button");
+var createParagraphSpan = document.createElement("span");
 var questionCount = 0;
 var numCorrect = 0;
-var numIncorrect = 0;
-var correctTally = [];
-var incorrectTally = [];
+var numIncorrect = 0; // const correctTally = []
+// const incorrectTally = []
 
 function loadInitalContent() {
   var getBody = document.querySelector('body');
@@ -169,48 +169,49 @@ function answerTally() {
   var createParagraph = document.createElement('p');
   var createDiv = document.createElement('div'); //Why wont this show??
 
-  var createParagraphTextNode = document.createTextNode("Correct Answer Tally: ".concat(correctTally, " Incorrect Answer Tally: ").concat(incorrectTally));
+  createParagraphSpan.innerHTML = "Correct Answer Tally: ".concat(numCorrect, " Incorrect Answer Tally: ").concat(numIncorrect); //set textNode to current then change clickevent later to change innerHTML to current numCorrect and numIncorrect.
+
   createDiv.className = 'tally-div mx-auto';
   createParagraph.className = 'tally-paragraph p-2 mt-3';
-  createParagraph.appendChild(createParagraphTextNode);
+  createParagraph.appendChild(createParagraphSpan);
   createDiv.appendChild(createParagraph);
   createMainContainerDiv.appendChild(createDiv);
 }
 
 function createAnswerBank() {
-  for (var answer in battleStarTriva[questionCount].answers) {
-    var _createButton = document.createElement("button");
+  var _loop = function _loop(answer) {
+    var createButton = document.createElement("button");
+    createButton.className = "possible-answer";
+    createButton.className = "ml-5 mb-3"; //how to make this work???
 
-    _createButton.className = "possible-answer";
-    _createButton.className = "ml-5 mb-3"; //how to make this work???
-
-    _createButton.disabled = false;
-
-    _createButton.setAttribute('data-letter', answer);
-
-    _createButton.innerHTML = battleStarTriva[questionCount].answers[answer];
-    createDiv.appendChild(_createButton);
-
-    _createButton.addEventListener('click', function (event) {
+    createButton.setAttribute('data-letter', answer);
+    createButton.innerHTML = battleStarTriva[questionCount].answers[answer];
+    createDiv.appendChild(createButton);
+    createButton.addEventListener('click', function (event) {
       var eventCheck = event.target.dataset.letter;
 
       if (eventCheck === battleStarTriva[questionCount].correctAnswer) {
         numCorrect++;
         questionCount++;
-        correctTally.push(numCorrect);
+        createButton.disabled = true;
+        createParagraphSpan.innerHTML = "Correct Answer Tally: ".concat(numCorrect, " Incorrect Answer Tally: ").concat(numIncorrect); //move logic so that you no longer need next button. Just have when they select an answer move to next question. 
+
         console.log(numCorrect);
-        console.log(correctTally);
         alert("Well look at that the nugget actually knows something!. \nDetails: \n".concat(battleStarTriva[questionCount].answerDetail));
         nextQestionButton(); //Want to make it so that when a button is clicked it cant be clicked again
         //found info on .disable button, yet the question is how to attach it to each created button....
       } else {
         numIncorrect++;
         questionCount++;
-        incorrectTally.push(numIncorrect);
-        console.log(incorrectTally);
+        createParagraphSpan.innerHTML = "Correct Answer Tally: ".concat(numCorrect, " Incorrect Answer Tally: ").concat(numIncorrect);
         alert("Sorry nugget that's the wrong answer. \nHeres why: \n".concat(battleStarTriva[questionCount].answerDetail));
+        nextQestionButton();
       }
     });
+  };
+
+  for (var answer in battleStarTriva[questionCount].answers) {
+    _loop(answer);
   }
 } //figure out how to better display answerDetails. 
 //you need a message to display when they get the answer wrong or right
