@@ -148,7 +148,7 @@ function createQuestion() {
   // const questionDiv = document.querySelector("#question-div")
   var createQuestionParagraph = document.createElement('p');
   var createTextNode = document.createTextNode("".concat(battleStarTriva[0].question));
-  createMainTag.appendChild(createDiv);
+  createMainContainerDiv.appendChild(createDiv);
   createDiv.appendChild(createQuestionParagraph);
   createDiv.classList.add('question-paragraph');
   createQuestionParagraph.appendChild(createTextNode);
@@ -171,7 +171,7 @@ function createAnswerBank() {
 
 
     _createButton.innerHTML = battleStarTriva[0].answers[answer];
-    createMainTag.appendChild(_createButton);
+    createMainContainerDiv.appendChild(_createButton);
 
     _createButton.addEventListener('click', function (event) {
       var eventCheck = event.target.dataset.letter;
@@ -197,7 +197,8 @@ function createAnswerBank() {
 
 function answerTally() {
   var createParagraph = document.createElement('p');
-  var createDiv = document.createElement('div');
+  var createDiv = document.createElement('div'); //Why wont this show??
+
   var createParagraphTextNode = document.createTextNode("Correct Answer Tally: ".concat(correctTally, " Incorrect Answer Tally: ").concat(incorrectTally));
   createDiv.className = 'tally-div';
   createParagraph.className = 'tally-paragraph';

@@ -45,7 +45,7 @@ function createQuestion(){
     // const questionDiv = document.querySelector("#question-div")
     const createQuestionParagraph = document.createElement('p')
     const createTextNode = document.createTextNode(`${battleStarTriva[0].question}`)
-    createMainTag.appendChild(createDiv)
+    createMainContainerDiv.appendChild(createDiv)
     createDiv.appendChild(createQuestionParagraph)
     createDiv.classList.add('question-paragraph')
     createQuestionParagraph.appendChild(createTextNode)
@@ -65,7 +65,7 @@ function createAnswerBank() {
         createButton.setAttribute('data-letter', answer)
         // document.querySelector([data-letter])
         createButton.innerHTML = battleStarTriva[0].answers[answer]
-        createMainTag.appendChild(createButton)
+        createMainContainerDiv.appendChild(createButton)
         createButton.addEventListener('click', function(event){
             const eventCheck = event.target.dataset.letter
             if (eventCheck === battleStarTriva[0].correctAnswer) {
@@ -96,8 +96,8 @@ ${battleStarTriva[0].answerDetail}`)
 function answerTally() {
     const createParagraph = document.createElement('p')
     const createDiv = document.createElement('div')
+    //Why wont this show??
     const createParagraphTextNode = document.createTextNode(`Correct Answer Tally: ${correctTally} Incorrect Answer Tally: ${incorrectTally}`)
-    
     createDiv.className = 'tally-div'
     createParagraph.className = 'tally-paragraph'
     
