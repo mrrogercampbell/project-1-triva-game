@@ -1,1 +1,10 @@
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
 @import './text-n-font.scss';
+
+.question {
+    border: red solid 5px;
+}
+
+.possible-answer {
+    margin: 8px;
+}

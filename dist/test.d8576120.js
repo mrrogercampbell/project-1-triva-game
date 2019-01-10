@@ -150,7 +150,9 @@ function createAnswerBank() {
   for (var answer in battleStarTriva[0].answers) {
     var createButton = document.createElement("button");
     createButton.className = "possible-answer";
-    createButton.setAttribute('data-letter', answer);
+    createButton.disabled = false;
+    createButton.setAttribute('data-letter', answer); // document.querySelector([data-letter])
+
     createButton.innerHTML = battleStarTriva[0].answers[answer];
     document.body.appendChild(createButton);
     createButton.addEventListener('click', function (event) {
@@ -161,7 +163,8 @@ function createAnswerBank() {
         correctTally.push(numCorrect);
         console.log(numCorrect);
         console.log(correctTally);
-        nextQestionButton();
+        nextQestionButton(); //Want to make it so that when a button is clicked it cant be clicked again
+        //found info on .disable button, yet the question is how to attach it to each created button....
       } else {
         numIncorrect++;
         incorrectTally.push(numIncorrect);
