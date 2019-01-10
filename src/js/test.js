@@ -24,11 +24,12 @@ const battleStarTriva = [
         answerDetail: 'Tom Zarek, the terrorist who had blown up a government building on Sagittaron was selected to represent them. Many of the fleet had felt disenfranchised by the current leadership and thought Zarek would be the one to bring change. After the announcement of his office, he contacted the fleet from the Astral Queen and thanked those who had brought him to power.'
     }
 ]
-
 const createMainTag = document.createElement('main')
 const getBody = document.querySelector('body')
 const createMainContainerDiv = document.createElement('div')
+const appendToMainRowDiv = document.querySelector('.main-tag-row-div')
 const createDiv = document.createElement('div')
+const createButton = document.createElement("button")
 
 function loadInitalContent() {
     getBody.append(createMainTag)
@@ -36,11 +37,11 @@ function loadInitalContent() {
     //why cant I add two classes at once?
     // createMainContainerDiv.classList.add('row, test')
     createMainContainerDiv.classList.add('row')
+    createMainContainerDiv.classList.add('main-tag-row-div')
     createMainTag.appendChild(createMainContainerDiv)
 }
 
 function createQuestion(){
-    
     // const questionDiv = document.querySelector("#question-div")
     const createQuestionParagraph = document.createElement('p')
     const createTextNode = document.createTextNode(`${battleStarTriva[0].question}`)
@@ -93,8 +94,17 @@ ${battleStarTriva[0].answerDetail}`)
 }
  // This function should diplay the current tally of correct and in correct answers
 function answerTally() {
-    console.log(correctTally)
-    console.log(incorrectTally)
+    const createParagraph = document.createElement('p')
+    const createDiv = document.createElement('div')
+    const createParagraphTextNode = document.createTextNode(`Correct Answer Tally: ${correctTally} Incorrect Answer Tally: ${incorrectTally}`)
+    
+    createDiv.className = 'tally-div'
+    createParagraph.className = 'tally-paragraph'
+    
+    createParagraph.appendChild(createParagraphTextNode)
+    createDiv.appendChild(createParagraph)
+    createMainContainerDiv.appendChild(createDiv)
+    
 }
 
 //figure out how to better display answerDetails. 
@@ -106,7 +116,6 @@ function answerTally() {
 
 function nextQestionButton() {
     const createDiv = document.createElement('div')
-    const createButton = document.createElement("button")
     createButton.className = 'next-question-button'
     createButton.innerHTML = 'Next Question'
     createButton.addEventListener('click', function(){
@@ -118,67 +127,9 @@ function nextQestionButton() {
 
 // createQuestion(battleStarTriva[0].question)
 loadInitalContent()
+answerTally()
 createQuestion()
 createAnswerBank()
 //Next Question button should only show if answer is correct
 // nextQestionButton()
 
-
-// function createAnswerBank() {
-//     const answerBankA = ["answer-1"]
-//     const answerBankB = ["answer-2"]
-//     const answerBankC = ["answer-3"]
-    
-//     answerBankA.forEach(function() {
-//         const createAnswerButton = document.createElement("button")
-//         createAnswerButton.className = "possible-answer"
-//         createAnswerButton.innerHTML = battleStarTriva[0].answers.a
-//         document.body.appendChild(createAnswerButton)
-//         // console.log(battleStarTriva[1].question)
-//         // console.log(battleStarTriva[1].answers)
-//         createAnswerButton.addEventListener('click', function(){
-//             console.log('Ive been clicked')
-//         })
-//     })
-//     answerBankB.forEach(function() {
-//         const createAnswerButton = document.createElement("button")
-//         createAnswerButton.className = "possible-answer"
-//         createAnswerButton.innerHTML = battleStarTriva[0].answers.b
-//         document.body.appendChild(createAnswerButton)
-//         createAnswerButton.addEventListener('click', function(){
-//             console.log('Ive been clicked')
-//         })
-//     })
-//     answerBankC.forEach(function() {
-//         const createAnswerButton = document.createElement("button")
-//         createAnswerButton.className = "possible-answer"
-//         createAnswerButton.innerHTML = battleStarTriva[0].answers.c
-//         document.body.appendChild(createAnswerButton)
-//         createAnswerButton.addEventListener('click', function(){
-//             console.log('Ive been clicked')
-//         })
-//     })
-// }
-
-
-
-    // const createAnswerButton = document.createElement("button")
-    //     createAnswerButton.className = "possible-answer"
-    //     createAnswerButton.innerHTML = battleStarTriva[0].answers.a
-    //     document.body.appendChild(createAnswerButton)
-    //     // console.log(battleStarTriva[0].answers)
-    //     createAnswerButton.addEventListener('click', function(){
-    //         console.log('Ive been clicked')
-    //     })
-// }
-
-//clickevent when clicked incurrment up by one to control moving to next question.
-
-
-// createAnswerBank()
-// createAnswerBank(battleStarTriva[0].answers.a, battleStarTriva[0].answers.b, battleStarTriva[0].answers.a)
-// console.log(battleStarTriva[0].answers.a)
-
-//create a submit button
-//attach an event listener to it 
-//each click mov through the question bank

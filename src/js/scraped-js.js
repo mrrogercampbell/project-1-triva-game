@@ -223,3 +223,63 @@ createAnswerBank()
 //create a submit button
 //attach an event listener to it 
 //each click mov through the question bank
+
+
+// function createAnswerBank() {
+//     const answerBankA = ["answer-1"]
+//     const answerBankB = ["answer-2"]
+//     const answerBankC = ["answer-3"]
+    
+//     answerBankA.forEach(function() {
+//         const createAnswerButton = document.createElement("button")
+//         createAnswerButton.className = "possible-answer"
+//         createAnswerButton.innerHTML = battleStarTriva[0].answers.a
+//         document.body.appendChild(createAnswerButton)
+//         // console.log(battleStarTriva[1].question)
+//         // console.log(battleStarTriva[1].answers)
+//         createAnswerButton.addEventListener('click', function(){
+//             console.log('Ive been clicked')
+//         })
+//     })
+//     answerBankB.forEach(function() {
+//         const createAnswerButton = document.createElement("button")
+//         createAnswerButton.className = "possible-answer"
+//         createAnswerButton.innerHTML = battleStarTriva[0].answers.b
+//         document.body.appendChild(createAnswerButton)
+//         createAnswerButton.addEventListener('click', function(){
+//             console.log('Ive been clicked')
+//         })
+//     })
+//     answerBankC.forEach(function() {
+//         const createAnswerButton = document.createElement("button")
+//         createAnswerButton.className = "possible-answer"
+//         createAnswerButton.innerHTML = battleStarTriva[0].answers.c
+//         document.body.appendChild(createAnswerButton)
+//         createAnswerButton.addEventListener('click', function(){
+//             console.log('Ive been clicked')
+//         })
+//     })
+// }
+
+
+
+    // const createAnswerButton = document.createElement("button")
+    //     createAnswerButton.className = "possible-answer"
+    //     createAnswerButton.innerHTML = battleStarTriva[0].answers.a
+    //     document.body.appendChild(createAnswerButton)
+    //     // console.log(battleStarTriva[0].answers)
+    //     createAnswerButton.addEventListener('click', function(){
+    //         console.log('Ive been clicked')
+    //     })
+// }
+
+//clickevent when clicked incurrment up by one to control moving to next question.
+
+
+// createAnswerBank()
+// createAnswerBank(battleStarTriva[0].answers.a, battleStarTriva[0].answers.b, battleStarTriva[0].answers.a)
+// console.log(battleStarTriva[0].answers.a)
+
+//create a submit button
+//attach an event listener to it 
+//each click mov through the question bank

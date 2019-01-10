@@ -130,7 +130,9 @@ var battleStarTriva = [{
 var createMainTag = document.createElement('main');
 var getBody = document.querySelector('body');
 var createMainContainerDiv = document.createElement('div');
+var appendToMainRowDiv = document.querySelector('.main-tag-row-div');
 var createDiv = document.createElement('div');
+var createButton = document.createElement("button");
 
 function loadInitalContent() {
   getBody.append(createMainTag);
@@ -138,6 +140,7 @@ function loadInitalContent() {
   // createMainContainerDiv.classList.add('row, test')
 
   createMainContainerDiv.classList.add('row');
+  createMainContainerDiv.classList.add('main-tag-row-div');
   createMainTag.appendChild(createMainContainerDiv);
 }
 
@@ -159,14 +162,18 @@ var incorrectTally = [];
 
 function createAnswerBank() {
   for (var answer in battleStarTriva[0].answers) {
-    var createButton = document.createElement("button");
-    createButton.className = "possible-answer";
-    createButton.disabled = false;
-    createButton.setAttribute('data-letter', answer); // document.querySelector([data-letter])
+    var _createButton = document.createElement("button");
 
-    createButton.innerHTML = battleStarTriva[0].answers[answer];
-    createMainTag.appendChild(createButton);
-    createButton.addEventListener('click', function (event) {
+    _createButton.className = "possible-answer";
+    _createButton.disabled = false;
+
+    _createButton.setAttribute('data-letter', answer); // document.querySelector([data-letter])
+
+
+    _createButton.innerHTML = battleStarTriva[0].answers[answer];
+    createMainTag.appendChild(_createButton);
+
+    _createButton.addEventListener('click', function (event) {
       var eventCheck = event.target.dataset.letter;
 
       if (eventCheck === battleStarTriva[0].correctAnswer) {
@@ -189,8 +196,14 @@ function createAnswerBank() {
 
 
 function answerTally() {
-  console.log(correctTally);
-  console.log(incorrectTally);
+  var createParagraph = document.createElement('p');
+  var createDiv = document.createElement('div');
+  var createParagraphTextNode = document.createTextNode("Correct Answer Tally: ".concat(correctTally, " Incorrect Answer Tally: ").concat(incorrectTally));
+  createDiv.className = 'tally-div';
+  createParagraph.className = 'tally-paragraph';
+  createParagraph.appendChild(createParagraphTextNode);
+  createDiv.appendChild(createParagraph);
+  createMainContainerDiv.appendChild(createDiv);
 } //figure out how to better display answerDetails. 
 //you need a message to display when they get the answer wrong or right
 //Possible create a new paragraph that gives the answerDetails, which show over your question.
@@ -201,7 +214,6 @@ function answerTally() {
 
 function nextQestionButton() {
   var createDiv = document.createElement('div');
-  var createButton = document.createElement("button");
   createButton.className = 'next-question-button';
   createButton.innerHTML = 'Next Question';
   createButton.addEventListener('click', function () {});
@@ -211,59 +223,10 @@ function nextQestionButton() {
 
 
 loadInitalContent();
+answerTally();
 createQuestion();
 createAnswerBank(); //Next Question button should only show if answer is correct
 // nextQestionButton()
-// function createAnswerBank() {
-//     const answerBankA = ["answer-1"]
-//     const answerBankB = ["answer-2"]
-//     const answerBankC = ["answer-3"]
-//     answerBankA.forEach(function() {
-//         const createAnswerButton = document.createElement("button")
-//         createAnswerButton.className = "possible-answer"
-//         createAnswerButton.innerHTML = battleStarTriva[0].answers.a
-//         document.body.appendChild(createAnswerButton)
-//         // console.log(battleStarTriva[1].question)
-//         // console.log(battleStarTriva[1].answers)
-//         createAnswerButton.addEventListener('click', function(){
-//             console.log('Ive been clicked')
-//         })
-//     })
-//     answerBankB.forEach(function() {
-//         const createAnswerButton = document.createElement("button")
-//         createAnswerButton.className = "possible-answer"
-//         createAnswerButton.innerHTML = battleStarTriva[0].answers.b
-//         document.body.appendChild(createAnswerButton)
-//         createAnswerButton.addEventListener('click', function(){
-//             console.log('Ive been clicked')
-//         })
-//     })
-//     answerBankC.forEach(function() {
-//         const createAnswerButton = document.createElement("button")
-//         createAnswerButton.className = "possible-answer"
-//         createAnswerButton.innerHTML = battleStarTriva[0].answers.c
-//         document.body.appendChild(createAnswerButton)
-//         createAnswerButton.addEventListener('click', function(){
-//             console.log('Ive been clicked')
-//         })
-//     })
-// }
-// const createAnswerButton = document.createElement("button")
-//     createAnswerButton.className = "possible-answer"
-//     createAnswerButton.innerHTML = battleStarTriva[0].answers.a
-//     document.body.appendChild(createAnswerButton)
-//     // console.log(battleStarTriva[0].answers)
-//     createAnswerButton.addEventListener('click', function(){
-//         console.log('Ive been clicked')
-//     })
-// }
-//clickevent when clicked incurrment up by one to control moving to next question.
-// createAnswerBank()
-// createAnswerBank(battleStarTriva[0].answers.a, battleStarTriva[0].answers.b, battleStarTriva[0].answers.a)
-// console.log(battleStarTriva[0].answers.a)
-//create a submit button
-//attach an event listener to it 
-//each click mov through the question bank
 },{}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
