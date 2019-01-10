@@ -9512,11 +9512,11 @@ h3 {
   }
 }
 main {
-  border: blue solid 4px;
+  border: blue solid 2px;
 }
 
 .question {
-  border: red solid 5px;
+  border: red solid 2px;
 }
 
 .possible-answer {

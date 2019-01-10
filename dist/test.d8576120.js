@@ -142,7 +142,11 @@ function loadInitalContent() {
   createMainContainerDiv.classList.add('row');
   createMainContainerDiv.classList.add('main-tag-row-div');
   createMainTag.appendChild(createMainContainerDiv);
-}
+} //responsivness checklist
+//set size for three screen sizes lg, md, sm
+//add size decisions to all created elements
+//test out the changes
+
 
 function createQuestion() {
   // const questionDiv = document.querySelector("#question-div")
@@ -151,6 +155,8 @@ function createQuestion() {
   createMainContainerDiv.appendChild(createDiv);
   createDiv.appendChild(createQuestionParagraph);
   createDiv.classList.add('question-paragraph');
+  createDiv.classList.add('mx-4');
+  createQuestionParagraph.classList.add('p-3');
   createQuestionParagraph.appendChild(createTextNode);
   createQuestionParagraph.classList.add('question');
 }
