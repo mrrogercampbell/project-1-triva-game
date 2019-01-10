@@ -152,13 +152,14 @@ function createQuestion() {
   // const questionDiv = document.querySelector("#question-div")
   var createQuestionParagraph = document.createElement('p');
   var createTextNode = document.createTextNode("".concat(battleStarTriva[0].question));
-  createMainContainerDiv.appendChild(createDiv);
-  createDiv.appendChild(createQuestionParagraph);
   createDiv.classList.add('question-paragraph');
   createDiv.classList.add('mx-4');
+  createDiv.classList.add('mb-2');
   createQuestionParagraph.classList.add('p-3');
-  createQuestionParagraph.appendChild(createTextNode);
   createQuestionParagraph.classList.add('question');
+  createMainContainerDiv.appendChild(createDiv);
+  createDiv.appendChild(createQuestionParagraph);
+  createQuestionParagraph.appendChild(createTextNode);
 }
 
 var numCorrect = 0;
@@ -171,13 +172,14 @@ function createAnswerBank() {
     var _createButton = document.createElement("button");
 
     _createButton.className = "possible-answer";
+    _createButton.className = "ml-5 mb-3"; //how to make this work???
+
     _createButton.disabled = false;
 
-    _createButton.setAttribute('data-letter', answer); // document.querySelector([data-letter])
-
+    _createButton.setAttribute('data-letter', answer);
 
     _createButton.innerHTML = battleStarTriva[0].answers[answer];
-    createMainContainerDiv.appendChild(_createButton);
+    createDiv.appendChild(_createButton);
 
     _createButton.addEventListener('click', function (event) {
       var eventCheck = event.target.dataset.letter;

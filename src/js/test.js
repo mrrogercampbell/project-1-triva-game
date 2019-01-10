@@ -50,13 +50,18 @@ function createQuestion(){
     // const questionDiv = document.querySelector("#question-div")
     const createQuestionParagraph = document.createElement('p')
     const createTextNode = document.createTextNode(`${battleStarTriva[0].question}`)
-    createMainContainerDiv.appendChild(createDiv)
-    createDiv.appendChild(createQuestionParagraph)
+    
     createDiv.classList.add('question-paragraph')
     createDiv.classList.add('mx-4')
+    createDiv.classList.add('mb-2')
+
     createQuestionParagraph.classList.add('p-3')
-    createQuestionParagraph.appendChild(createTextNode)
     createQuestionParagraph.classList.add('question')
+    
+    createMainContainerDiv.appendChild(createDiv)
+    createDiv.appendChild(createQuestionParagraph)
+    createQuestionParagraph.appendChild(createTextNode)
+    
 }
 
 let numCorrect = 0
@@ -67,12 +72,16 @@ const incorrectTally = []
 function createAnswerBank() {
     for(let answer in battleStarTriva[0].answers) {
         const createButton = document.createElement("button")
+        
         createButton.className = "possible-answer"
+        createButton.className = "ml-5 mb-3"
+        //how to make this work???
         createButton.disabled = false
         createButton.setAttribute('data-letter', answer)
-        // document.querySelector([data-letter])
         createButton.innerHTML = battleStarTriva[0].answers[answer]
-        createMainContainerDiv.appendChild(createButton)
+
+        createDiv.appendChild(createButton)
+
         createButton.addEventListener('click', function(event){
             const eventCheck = event.target.dataset.letter
             if (eventCheck === battleStarTriva[0].correctAnswer) {
