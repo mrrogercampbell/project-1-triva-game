@@ -53,9 +53,10 @@ function loadInitalContent() {
 //add size decisions to all created elements
 //test out the changes
 
+const createQuestionParagraph = document.createElement('p')
+
 function createQuestion(){
     // const questionDiv = document.querySelector("#question-div")
-    const createQuestionParagraph = document.createElement('p')
     const createTextNode = document.createTextNode(`${battleStarTriva[questionCount].question}`)
     
     createDiv.className = 'question-paragraph mx-4 mb-2'
@@ -64,6 +65,12 @@ function createQuestion(){
     createMainContainerDiv.appendChild(createDiv)
     createDiv.appendChild(createQuestionParagraph)
     createQuestionParagraph.appendChild(createTextNode)   
+}
+
+function questionTransition() {
+    const deleteQuestionDiv = document.querySelector('.question-paragraph')
+    const parentOfQuestionDiv = document.querySelector('.main-tag-row-div')
+    parentOfQuestionDiv.removeChild(deleteQuestionDiv)
 }
 
 
@@ -138,12 +145,14 @@ function nextQestionButton() {
     createButton.className = 'next-question-button'
     createButton.innerHTML = 'Next Question'
     createButton.addEventListener('click', function(){
+        questionTransition()
         createQuestion()
         createAnswerBank()
     })
     createMainTag.appendChild(createDiv)
     createMainTag.appendChild(createButton)
 }
+
 
 // createQuestion(battleStarTriva[0].question)
 loadInitalContent()

@@ -153,15 +153,22 @@ function loadInitalContent() {
 //test out the changes
 
 
+var createQuestionParagraph = document.createElement('p');
+
 function createQuestion() {
   // const questionDiv = document.querySelector("#question-div")
-  var createQuestionParagraph = document.createElement('p');
   var createTextNode = document.createTextNode("".concat(battleStarTriva[questionCount].question));
   createDiv.className = 'question-paragraph mx-4 mb-2';
   createQuestionParagraph.className = 'p-3 question';
   createMainContainerDiv.appendChild(createDiv);
   createDiv.appendChild(createQuestionParagraph);
   createQuestionParagraph.appendChild(createTextNode);
+}
+
+function questionTransition() {
+  var deleteQuestionDiv = document.querySelector('.question-paragraph');
+  var parentOfQuestionDiv = document.querySelector('.main-tag-row-div');
+  parentOfQuestionDiv.removeChild(deleteQuestionDiv);
 } // This function should diplay the current tally of correct and in correct answers
 
 
@@ -226,6 +233,7 @@ function nextQestionButton() {
   createButton.className = 'next-question-button';
   createButton.innerHTML = 'Next Question';
   createButton.addEventListener('click', function () {
+    questionTransition();
     createQuestion();
     createAnswerBank();
   });
