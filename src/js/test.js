@@ -51,12 +51,12 @@ function createQuestion(){
     const createQuestionParagraph = document.createElement('p')
     const createTextNode = document.createTextNode(`${battleStarTriva[0].question}`)
     
-    createDiv.classList.add('question-paragraph')
-    createDiv.classList.add('mx-4')
-    createDiv.classList.add('mb-2')
+    createDiv.className = 'question-paragraph mx-4 mb-2'
 
-    createQuestionParagraph.classList.add('p-3')
-    createQuestionParagraph.classList.add('question')
+
+
+    createQuestionParagraph.className = 'p-3 question'
+
     
     createMainContainerDiv.appendChild(createDiv)
     createDiv.appendChild(createQuestionParagraph)
@@ -114,13 +114,12 @@ function answerTally() {
     const createDiv = document.createElement('div')
     //Why wont this show??
     const createParagraphTextNode = document.createTextNode(`Correct Answer Tally: ${correctTally} Incorrect Answer Tally: ${incorrectTally}`)
-    createDiv.className = 'tally-div'
+    createDiv.className = 'tally-div mx-auto'
     createParagraph.className = 'tally-paragraph'
     
     createParagraph.appendChild(createParagraphTextNode)
     createDiv.appendChild(createParagraph)
     createMainContainerDiv.appendChild(createDiv)
-    
 }
 
 //figure out how to better display answerDetails. 

@@ -152,11 +152,8 @@ function createQuestion() {
   // const questionDiv = document.querySelector("#question-div")
   var createQuestionParagraph = document.createElement('p');
   var createTextNode = document.createTextNode("".concat(battleStarTriva[0].question));
-  createDiv.classList.add('question-paragraph');
-  createDiv.classList.add('mx-4');
-  createDiv.classList.add('mb-2');
-  createQuestionParagraph.classList.add('p-3');
-  createQuestionParagraph.classList.add('question');
+  createDiv.className = 'question-paragraph mx-4 mb-2';
+  createQuestionParagraph.className = 'p-3 question';
   createMainContainerDiv.appendChild(createDiv);
   createDiv.appendChild(createQuestionParagraph);
   createQuestionParagraph.appendChild(createTextNode);
@@ -208,7 +205,7 @@ function answerTally() {
   var createDiv = document.createElement('div'); //Why wont this show??
 
   var createParagraphTextNode = document.createTextNode("Correct Answer Tally: ".concat(correctTally, " Incorrect Answer Tally: ").concat(incorrectTally));
-  createDiv.className = 'tally-div';
+  createDiv.className = 'tally-div mx-auto';
   createParagraph.className = 'tally-paragraph';
   createParagraph.appendChild(createParagraphTextNode);
   createDiv.appendChild(createParagraph);
