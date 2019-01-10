@@ -26,9 +26,15 @@ const battleStarTriva = [
 ]
 
 const gameSpaceDiv = document.createElement('main')
+const getBody = document.querySelector('body')
+const createDiv = document.createElement('div')
+// const createRow = document.creat
 
 function loadInitalContent() {
     document.body.append(gameSpaceDiv)
+    gameSpaceDiv.classList.add('container')
+    createDiv.classList.add('row')
+    gameSpaceDiv.appendChild(createDiv)
 }
 
 function createQuestion(){
