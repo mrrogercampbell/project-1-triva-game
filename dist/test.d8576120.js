@@ -127,15 +127,17 @@ var battleStarTriva = [{
   correctAnswer: 'b',
   answerDetail: 'Tom Zarek, the terrorist who had blown up a government building on Sagittaron was selected to represent them. Many of the fleet had felt disenfranchised by the current leadership and thought Zarek would be the one to bring change. After the announcement of his office, he contacted the fleet from the Astral Queen and thanked those who had brought him to power.'
 }];
-var gameSpaceDiv = document.createElement('main');
+var createMainTag = document.createElement('main');
 var getBody = document.querySelector('body');
-var createDiv = document.createElement('div'); // const createRow = document.creat
+var createMainContainerDiv = document.createElement('div');
 
 function loadInitalContent() {
-  document.body.append(gameSpaceDiv);
-  gameSpaceDiv.classList.add('container');
-  createDiv.classList.add('row');
-  gameSpaceDiv.appendChild(createDiv);
+  getBody.append(createMainTag);
+  createMainTag.classList.add('container'); //why cant I add two classes at once?
+  // createMainContainerDiv.classList.add('row, test')
+
+  createMainContainerDiv.classList.add('row');
+  createMainTag.appendChild(createMainContainerDiv);
 }
 
 function createQuestion() {
@@ -143,7 +145,7 @@ function createQuestion() {
 
   var createQuestionParagraph = document.createElement('p');
   var createTextNode = document.createTextNode("".concat(battleStarTriva[0].question));
-  gameSpaceDiv.appendChild(createDiv);
+  createMainTag.appendChild(createDiv);
   createDiv.appendChild(createQuestionParagraph);
   createDiv.classList.add('question-paragraph');
   createQuestionParagraph.appendChild(createTextNode);
@@ -163,7 +165,7 @@ function createAnswerBank() {
     createButton.setAttribute('data-letter', answer); // document.querySelector([data-letter])
 
     createButton.innerHTML = battleStarTriva[0].answers[answer];
-    gameSpaceDiv.appendChild(createButton);
+    createMainTag.appendChild(createButton);
     createButton.addEventListener('click', function (event) {
       var eventCheck = event.target.dataset.letter;
 
@@ -182,8 +184,8 @@ function createAnswerBank() {
       }
     });
   }
-} //Add a count feature so that you can keep track of the score. 
-//figure out how to better display answerDetails. 
+} //figure out how to better display answerDetails. 
+//you need a message to display when they get the answer wrong or right
 //Possible create a new paragraph that gives the answerDetails. 
 // After that: figuring out how to change the information over to the next question
 
@@ -191,8 +193,8 @@ function createAnswerBank() {
 function nextQestionButton() {
   var createDiv = document.createElement('div');
   var createButton = document.createElement("button");
-  createButton.className = 'submit-button';
-  createButton.innerHTML = 'Submit Answer';
+  createButton.className = 'next-question-button';
+  createButton.innerHTML = 'Next Question';
   createButton.addEventListener('click', function () {});
   document.body.appendChild(createDiv);
   document.body.appendChild(createButton);

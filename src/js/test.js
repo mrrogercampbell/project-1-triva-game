@@ -25,16 +25,17 @@ const battleStarTriva = [
     }
 ]
 
-const gameSpaceDiv = document.createElement('main')
+const createMainTag = document.createElement('main')
 const getBody = document.querySelector('body')
-const createDiv = document.createElement('div')
-// const createRow = document.creat
+const createMainContainerDiv = document.createElement('div')
 
 function loadInitalContent() {
-    document.body.append(gameSpaceDiv)
-    gameSpaceDiv.classList.add('container')
-    createDiv.classList.add('row')
-    gameSpaceDiv.appendChild(createDiv)
+    getBody.append(createMainTag)
+    createMainTag.classList.add('container')
+    //why cant I add two classes at once?
+    // createMainContainerDiv.classList.add('row, test')
+    createMainContainerDiv.classList.add('row')
+    createMainTag.appendChild(createMainContainerDiv)
 }
 
 function createQuestion(){
@@ -42,7 +43,7 @@ function createQuestion(){
     // const questionDiv = document.querySelector("#question-div")
     const createQuestionParagraph = document.createElement('p')
     const createTextNode = document.createTextNode(`${battleStarTriva[0].question}`)
-    gameSpaceDiv.appendChild(createDiv)
+    createMainTag.appendChild(createDiv)
     createDiv.appendChild(createQuestionParagraph)
     createDiv.classList.add('question-paragraph')
     createQuestionParagraph.appendChild(createTextNode)
@@ -60,7 +61,7 @@ function createAnswerBank() {
         createButton.setAttribute('data-letter', answer)
         // document.querySelector([data-letter])
         createButton.innerHTML = battleStarTriva[0].answers[answer]
-        gameSpaceDiv.appendChild(createButton)
+        createMainTag.appendChild(createButton)
         createButton.addEventListener('click', function(event){
             const eventCheck = event.target.dataset.letter
             if (eventCheck === battleStarTriva[0].correctAnswer) {
@@ -83,17 +84,18 @@ ${battleStarTriva[0].answerDetail}`)
         })
     }
 }
+ 
 
-//Add a count feature so that you can keep track of the score. 
 //figure out how to better display answerDetails. 
+//you need a message to display when they get the answer wrong or right
 //Possible create a new paragraph that gives the answerDetails. 
 // After that: figuring out how to change the information over to the next question
 
 function nextQestionButton() {
     const createDiv = document.createElement('div')
     const createButton = document.createElement("button")
-    createButton.className = 'submit-button'
-    createButton.innerHTML = 'Submit Answer'
+    createButton.className = 'next-question-button'
+    createButton.innerHTML = 'Next Question'
     createButton.addEventListener('click', function(){
 
     })
