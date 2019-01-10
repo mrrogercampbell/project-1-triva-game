@@ -128,13 +128,18 @@ var battleStarTriva = [{
   answerDetail: 'Tom Zarek, the terrorist who had blown up a government building on Sagittaron was selected to represent them. Many of the fleet had felt disenfranchised by the current leadership and thought Zarek would be the one to bring change. After the announcement of his office, he contacted the fleet from the Astral Queen and thanked those who had brought him to power.'
 }];
 var createMainTag = document.createElement('main');
-var getBody = document.querySelector('body');
-var createMainContainerDiv = document.createElement('div');
-var appendToMainRowDiv = document.querySelector('.main-tag-row-div');
+var createMainContainerDiv = document.createElement('div'); // const appendToMainRowDiv = document.querySelector('.main-tag-row-div')
+
 var createDiv = document.createElement('div');
 var createButton = document.createElement("button");
+var questionCount = 0;
+var numCorrect = 0;
+var numIncorrect = 0;
+var correctTally = [];
+var incorrectTally = [];
 
 function loadInitalContent() {
+  var getBody = document.querySelector('body');
   getBody.append(createMainTag);
   createMainTag.classList.add('container'); //why cant I add two classes at once?
   // createMainContainerDiv.classList.add('row, test')
@@ -151,52 +156,12 @@ function loadInitalContent() {
 function createQuestion() {
   // const questionDiv = document.querySelector("#question-div")
   var createQuestionParagraph = document.createElement('p');
-  var createTextNode = document.createTextNode("".concat(battleStarTriva[0].question));
+  var createTextNode = document.createTextNode("".concat(battleStarTriva[questionCount].question));
   createDiv.className = 'question-paragraph mx-4 mb-2';
   createQuestionParagraph.className = 'p-3 question';
   createMainContainerDiv.appendChild(createDiv);
   createDiv.appendChild(createQuestionParagraph);
   createQuestionParagraph.appendChild(createTextNode);
-}
-
-var numCorrect = 0;
-var numIncorrect = 0;
-var correctTally = [];
-var incorrectTally = [];
-
-function createAnswerBank() {
-  for (var answer in battleStarTriva[0].answers) {
-    var _createButton = document.createElement("button");
-
-    _createButton.className = "possible-answer";
-    _createButton.className = "ml-5 mb-3"; //how to make this work???
-
-    _createButton.disabled = false;
-
-    _createButton.setAttribute('data-letter', answer);
-
-    _createButton.innerHTML = battleStarTriva[0].answers[answer];
-    createDiv.appendChild(_createButton);
-
-    _createButton.addEventListener('click', function (event) {
-      var eventCheck = event.target.dataset.letter;
-
-      if (eventCheck === battleStarTriva[0].correctAnswer) {
-        numCorrect++;
-        correctTally.push(numCorrect);
-        console.log(numCorrect);
-        console.log(correctTally);
-        alert("Well look at that the nugget actually knows something!. \nDetails: \n".concat(battleStarTriva[0].answerDetail));
-        nextQestionButton(); //Want to make it so that when a button is clicked it cant be clicked again
-        //found info on .disable button, yet the question is how to attach it to each created button....
-      } else {
-        numIncorrect++;
-        incorrectTally.push(numIncorrect);
-        console.log(incorrectTally);
-        alert("Sorry nugget that's the wrong answer. \nHeres why: \n".concat(battleStarTriva[0].answerDetail));
-      }
-    });
-  }
 } // This function should diplay the current tally of correct and in correct answers
 
 
@@ -206,10 +171,47 @@ function answerTally() {
 
   var createParagraphTextNode = document.createTextNode("Correct Answer Tally: ".concat(correctTally, " Incorrect Answer Tally: ").concat(incorrectTally));
   createDiv.className = 'tally-div mx-auto';
-  createParagraph.className = 'tally-paragraph';
+  createParagraph.className = 'tally-paragraph p-2 mt-3';
   createParagraph.appendChild(createParagraphTextNode);
   createDiv.appendChild(createParagraph);
   createMainContainerDiv.appendChild(createDiv);
+}
+
+function createAnswerBank() {
+  for (var answer in battleStarTriva[questionCount].answers) {
+    var _createButton = document.createElement("button");
+
+    _createButton.className = "possible-answer";
+    _createButton.className = "ml-5 mb-3"; //how to make this work???
+
+    _createButton.disabled = false;
+
+    _createButton.setAttribute('data-letter', answer);
+
+    _createButton.innerHTML = battleStarTriva[questionCount].answers[answer];
+    createDiv.appendChild(_createButton);
+
+    _createButton.addEventListener('click', function (event) {
+      var eventCheck = event.target.dataset.letter;
+
+      if (eventCheck === battleStarTriva[questionCount].correctAnswer) {
+        numCorrect++;
+        questionCount++;
+        correctTally.push(numCorrect);
+        console.log(numCorrect);
+        console.log(correctTally);
+        alert("Well look at that the nugget actually knows something!. \nDetails: \n".concat(battleStarTriva[questionCount].answerDetail));
+        nextQestionButton(); //Want to make it so that when a button is clicked it cant be clicked again
+        //found info on .disable button, yet the question is how to attach it to each created button....
+      } else {
+        numIncorrect++;
+        questionCount++;
+        incorrectTally.push(numIncorrect);
+        console.log(incorrectTally);
+        alert("Sorry nugget that's the wrong answer. \nHeres why: \n".concat(battleStarTriva[questionCount].answerDetail));
+      }
+    });
+  }
 } //figure out how to better display answerDetails. 
 //you need a message to display when they get the answer wrong or right
 //Possible create a new paragraph that gives the answerDetails, which show over your question.
@@ -222,7 +224,10 @@ function nextQestionButton() {
   var createDiv = document.createElement('div');
   createButton.className = 'next-question-button';
   createButton.innerHTML = 'Next Question';
-  createButton.addEventListener('click', function () {});
+  createButton.addEventListener('click', function () {
+    createQuestion();
+    createAnswerBank();
+  });
   createMainTag.appendChild(createDiv);
   createMainTag.appendChild(createButton);
 } // createQuestion(battleStarTriva[0].question)

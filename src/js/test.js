@@ -25,13 +25,19 @@ const battleStarTriva = [
     }
 ]
 const createMainTag = document.createElement('main')
-const getBody = document.querySelector('body')
 const createMainContainerDiv = document.createElement('div')
-const appendToMainRowDiv = document.querySelector('.main-tag-row-div')
+// const appendToMainRowDiv = document.querySelector('.main-tag-row-div')
 const createDiv = document.createElement('div')
 const createButton = document.createElement("button")
 
+let questionCount = 0
+let numCorrect = 0
+let numIncorrect = 0
+const correctTally = []
+const incorrectTally = []
+
 function loadInitalContent() {
+    const getBody = document.querySelector('body')
     getBody.append(createMainTag)
     createMainTag.classList.add('container')
     //why cant I add two classes at once?
@@ -49,28 +55,34 @@ function loadInitalContent() {
 function createQuestion(){
     // const questionDiv = document.querySelector("#question-div")
     const createQuestionParagraph = document.createElement('p')
-    const createTextNode = document.createTextNode(`${battleStarTriva[0].question}`)
+    const createTextNode = document.createTextNode(`${battleStarTriva[questionCount].question}`)
     
     createDiv.className = 'question-paragraph mx-4 mb-2'
-
-
-
     createQuestionParagraph.className = 'p-3 question'
-
     
     createMainContainerDiv.appendChild(createDiv)
     createDiv.appendChild(createQuestionParagraph)
-    createQuestionParagraph.appendChild(createTextNode)
-    
+    createQuestionParagraph.appendChild(createTextNode)   
 }
 
-let numCorrect = 0
-let numIncorrect = 0
-const correctTally = []
-const incorrectTally = []
+
+ // This function should diplay the current tally of correct and in correct answers
+ function answerTally() {
+    const createParagraph = document.createElement('p')
+    const createDiv = document.createElement('div')
+    //Why wont this show??
+    const createParagraphTextNode = document.createTextNode(`Correct Answer Tally: ${correctTally} Incorrect Answer Tally: ${incorrectTally}`)
+    createDiv.className = 'tally-div mx-auto'
+    createParagraph.className = 'tally-paragraph p-2 mt-3'
+    
+    createParagraph.appendChild(createParagraphTextNode)
+    createDiv.appendChild(createParagraph)
+    createMainContainerDiv.appendChild(createDiv)
+}
+
 
 function createAnswerBank() {
-    for(let answer in battleStarTriva[0].answers) {
+    for(let answer in battleStarTriva[questionCount].answers) {
         const createButton = document.createElement("button")
         
         createButton.className = "possible-answer"
@@ -78,48 +90,37 @@ function createAnswerBank() {
         //how to make this work???
         createButton.disabled = false
         createButton.setAttribute('data-letter', answer)
-        createButton.innerHTML = battleStarTriva[0].answers[answer]
+        createButton.innerHTML = battleStarTriva[questionCount].answers[answer]
 
         createDiv.appendChild(createButton)
 
         createButton.addEventListener('click', function(event){
             const eventCheck = event.target.dataset.letter
-            if (eventCheck === battleStarTriva[0].correctAnswer) {
+            if (eventCheck === battleStarTriva[questionCount].correctAnswer) {
                 numCorrect++
+                questionCount++
                 correctTally.push(numCorrect)
                 console.log(numCorrect)
                 console.log(correctTally)
                 alert(`Well look at that the nugget actually knows something!. 
 Details: 
-${battleStarTriva[0].answerDetail}`)
+${battleStarTriva[questionCount].answerDetail}`)
             
                 nextQestionButton()
                 //Want to make it so that when a button is clicked it cant be clicked again
                 //found info on .disable button, yet the question is how to attach it to each created button....
             } else {
                 numIncorrect++
+                questionCount++
                 incorrectTally.push(numIncorrect)
                 console.log(incorrectTally)
                 alert(`Sorry nugget that's the wrong answer. 
 Heres why: 
-${battleStarTriva[0].answerDetail}`)
+${battleStarTriva[questionCount].answerDetail}`)
             
             }
         })
     }
-}
- // This function should diplay the current tally of correct and in correct answers
-function answerTally() {
-    const createParagraph = document.createElement('p')
-    const createDiv = document.createElement('div')
-    //Why wont this show??
-    const createParagraphTextNode = document.createTextNode(`Correct Answer Tally: ${correctTally} Incorrect Answer Tally: ${incorrectTally}`)
-    createDiv.className = 'tally-div mx-auto'
-    createParagraph.className = 'tally-paragraph'
-    
-    createParagraph.appendChild(createParagraphTextNode)
-    createDiv.appendChild(createParagraph)
-    createMainContainerDiv.appendChild(createDiv)
 }
 
 //figure out how to better display answerDetails. 
@@ -129,12 +130,14 @@ function answerTally() {
 // After that: figuring out how to change the information over to the next question
 //At the end of the quiz show their over all score and grade them or give them a message about how they did.
 
+
 function nextQestionButton() {
     const createDiv = document.createElement('div')
     createButton.className = 'next-question-button'
     createButton.innerHTML = 'Next Question'
     createButton.addEventListener('click', function(){
-
+        createQuestion()
+        createAnswerBank()
     })
     createMainTag.appendChild(createDiv)
     createMainTag.appendChild(createButton)
