@@ -127,14 +127,18 @@ var battleStarTriva = [{
   correctAnswer: 'b',
   answerDetail: 'Tom Zarek, the terrorist who had blown up a government building on Sagittaron was selected to represent them. Many of the fleet had felt disenfranchised by the current leadership and thought Zarek would be the one to bring change. After the announcement of his office, he contacted the fleet from the Astral Queen and thanked those who had brought him to power.'
 }];
+var gameSpaceDiv = document.createElement('main');
+
+function loadInitalContent() {
+  document.body.append(gameSpaceDiv);
+}
 
 function createQuestion() {
-  var grabBodyTag = document.querySelector('body');
   var createDiv = document.createElement('div'); // const questionDiv = document.querySelector("#question-div")
 
   var createQuestionParagraph = document.createElement('p');
   var createTextNode = document.createTextNode("".concat(battleStarTriva[0].question));
-  grabBodyTag.appendChild(createDiv);
+  gameSpaceDiv.appendChild(createDiv);
   createDiv.appendChild(createQuestionParagraph);
   createDiv.classList.add('question-paragraph');
   createQuestionParagraph.appendChild(createTextNode);
@@ -154,7 +158,7 @@ function createAnswerBank() {
     createButton.setAttribute('data-letter', answer); // document.querySelector([data-letter])
 
     createButton.innerHTML = battleStarTriva[0].answers[answer];
-    document.body.appendChild(createButton);
+    gameSpaceDiv.appendChild(createButton);
     createButton.addEventListener('click', function (event) {
       var eventCheck = event.target.dataset.letter;
 
@@ -190,6 +194,7 @@ function nextQestionButton() {
 } // createQuestion(battleStarTriva[0].question)
 
 
+loadInitalContent();
 createQuestion();
 createAnswerBank(); //Next Question button should only show if answer is correct
 // nextQestionButton()

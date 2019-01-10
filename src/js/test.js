@@ -25,13 +25,18 @@ const battleStarTriva = [
     }
 ]
 
+const gameSpaceDiv = document.createElement('main')
+
+function loadInitalContent() {
+    document.body.append(gameSpaceDiv)
+}
+
 function createQuestion(){
-    const grabBodyTag = document.querySelector('body')
     const createDiv = document.createElement('div')
     // const questionDiv = document.querySelector("#question-div")
     const createQuestionParagraph = document.createElement('p')
     const createTextNode = document.createTextNode(`${battleStarTriva[0].question}`)
-    grabBodyTag.appendChild(createDiv)
+    gameSpaceDiv.appendChild(createDiv)
     createDiv.appendChild(createQuestionParagraph)
     createDiv.classList.add('question-paragraph')
     createQuestionParagraph.appendChild(createTextNode)
@@ -49,7 +54,7 @@ function createAnswerBank() {
         createButton.setAttribute('data-letter', answer)
         // document.querySelector([data-letter])
         createButton.innerHTML = battleStarTriva[0].answers[answer]
-        document.body.appendChild(createButton)
+        gameSpaceDiv.appendChild(createButton)
         createButton.addEventListener('click', function(event){
             const eventCheck = event.target.dataset.letter
             if (eventCheck === battleStarTriva[0].correctAnswer) {
@@ -91,6 +96,7 @@ function nextQestionButton() {
 }
 
 // createQuestion(battleStarTriva[0].question)
+loadInitalContent()
 createQuestion()
 createAnswerBank()
 //Next Question button should only show if answer is correct

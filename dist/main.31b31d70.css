@@ -9511,6 +9511,10 @@ h3 {
     border-color: #dee2e6;
   }
 }
+main {
+  border: blue solid 4px;
+}
+
 .question {
   border: red solid 5px;
 }

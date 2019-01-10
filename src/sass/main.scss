@@ -1,6 +1,9 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 @import './text-n-font.scss';
 
+main {
+    border: blue solid 4px;
+}
 .question {
     border: red solid 5px;
 }
