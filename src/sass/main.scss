@@ -6,25 +6,33 @@ body {
     background-size: cover; 
 }
 
-main {
-    border: blue solid 2px;
-}
+// main {
+    
+// }
 
 .main-tag-row-div {
-    background-color: grey;
-}
-.question {
-    border: red solid 2px;
-}
-
-.tally-paragraph {
-    border: brown solid 2px;
+    // background-color: grey;
+    // border: green solid 5px;
+    height: 100vh;
 }
 
-// .tally-dv {
-//     width: 200px;
-//     display: block;
+// .tally-paragraph {
+//     // border: brown solid 2px;
 // }
+
+.question {
+    background:rgba(63, 62, 62, 0.276);
+    color: black;
+    //     border: red solid 2px;
+}
+
+.tally-div {
+    background:rgba(63, 62, 62, 0.276);
+    color: black;
+    height: 10vh;
+    // width: 200px;
+    // display: block;
+}
 
 //Make game responsive
 //need to add container classes to main and div tags.

@@ -159,7 +159,8 @@ function loadInitalContent() {
   var getBody = document.querySelector('body');
   getBody.append(createMainTag);
   createMainTag.classList.add('container');
-  createMainContainerDiv.className = 'row main-tag-row-div'; // createMainContainerDiv.classList.add('')
+  createMainContainerDiv.className = 'row main-tag-row-div mt-5'; // createMainTag.className = 'd-flex flex-column'
+  // createMainContainerDiv.className = 'align-self-center main-tag-row-div'
 
   createMainTag.appendChild(createMainContainerDiv);
 } //responsivness checklist
