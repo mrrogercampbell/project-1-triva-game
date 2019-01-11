@@ -283,3 +283,19 @@ createAnswerBank()
 //create a submit button
 //attach an event listener to it 
 //each click mov through the question bank
+
+
+// function nextQestionButton() {
+//     const createDiv = document.createElement('div')
+//     createButton.className = 'next-question-button'
+//     createButton.innerHTML = 'Next Question'
+//     createButton.addEventListener('click', function(){
+//         questionTransition()
+//         createQuestion()
+//         createAnswerBank()
+//         // setTimeout(createQuestion, 500);
+//         console.log('clicked on something')
+//     })
+//     createMainTag.appendChild(createDiv)
+//     createMainTag.appendChild(createButton)
+// }
