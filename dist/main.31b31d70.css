@@ -9511,8 +9511,17 @@ h3 {
     border-color: #dee2e6;
   }
 }
+body {
+  background-image: url("dope-space-img.edae3111.jpg");
+  background-size: cover;
+}
+
 main {
   border: blue solid 2px;
+}
+
+.main-tag-row-div {
+  background-color: grey;
 }
 
 .question {

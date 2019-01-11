@@ -1,8 +1,17 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 @import './text-n-font.scss';
 
+body {
+    background-image: url('../img/dope-space-img.jpg');
+    background-size: cover; 
+}
+
 main {
     border: blue solid 2px;
+}
+
+.main-tag-row-div {
+    background-color: grey;
 }
 .question {
     border: red solid 2px;
@@ -11,9 +20,7 @@ main {
 .tally-paragraph {
     border: brown solid 2px;
 }
-// body {
-//     background-color: black;
-// }
+
 // .tally-dv {
 //     width: 200px;
 //     display: block;

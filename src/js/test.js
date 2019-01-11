@@ -60,8 +60,8 @@ function loadInitalContent() {
     const getBody = document.querySelector('body')
     getBody.append(createMainTag)
     createMainTag.classList.add('container')
-    createMainContainerDiv.classList.add('row')
-    createMainContainerDiv.classList.add('main-tag-row-div')
+    createMainContainerDiv.className = 'row main-tag-row-div'
+    // createMainContainerDiv.classList.add('')
     createMainTag.appendChild(createMainContainerDiv)
 }
 
