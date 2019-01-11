@@ -1,4 +1,4 @@
-const battleStarTriva = [
+const scifiQuotes = [
     { 
         question: 'Do. Or do not. There is no try',
         answers: {

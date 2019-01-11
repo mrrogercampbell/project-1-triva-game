@@ -9521,12 +9521,12 @@ body {
 }
 
 .question {
-  background: rgba(63, 62, 62, 0.276);
-  color: black;
+  background: rgba(63, 62, 62, 0.5);
+  color: white;
 }
 
 .tally-div {
-  background: rgba(63, 62, 62, 0.276);
-  color: black;
-  height: 10vh;
+  background: rgba(63, 62, 62, 0.5);
+  color: white;
+  height: 5vh;
 }

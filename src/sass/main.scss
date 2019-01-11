@@ -6,10 +6,6 @@ body {
     background-size: cover; 
 }
 
-// main {
-    
-// }
-
 .main-tag-row-div {
     // background-color: grey;
     // border: green solid 5px;
@@ -21,25 +17,16 @@ body {
 // }
 
 .question {
-    background:rgba(63, 62, 62, 0.276);
-    color: black;
+    background:rgba(63, 62, 62, 0.5);
+    color: white;
     //     border: red solid 2px;
 }
 
 .tally-div {
-    background:rgba(63, 62, 62, 0.276);
-    color: black;
-    height: 10vh;
+    background:rgba(63, 62, 62, 0.5);
+    color: white;
+    height: 5vh;
     // width: 200px;
     // display: block;
 }
 
-//Make game responsive
-//need to add container classes to main and div tags.
-//set columns and rows
-//Define column of question lengths based on screen size.
-//Decide button placement based on screen size
-//set borders and margins for: buttons & question
-//Style the buttons themselves
-//Add background image or color (create a cool battlestar theme)
-//
