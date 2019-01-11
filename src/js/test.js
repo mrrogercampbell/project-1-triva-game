@@ -30,7 +30,18 @@ const battleStarTriva = [
         },
         correctAnswer: 'c',
         answerDetail: 'The president saw nearly a dozen snakes on her podium during her question and answer session. The visions made her behavior muddled and awkward, causing the reporters to give her strange looks. Later, when talking with a priestess, Laura learned that her experience was similar to a prophecy written by Pythia: "serpents numbering two and ten.',
-    }
+    },
+    {
+        question: 'One of Galactica\'s officers woke up to succumb to one of his/her well-known vices. Later, when this officer was talking to Tyrol, Cally, and Socinus, it was clear that he/she was under the influence of alcohol. Who was it?',
+        answers: {
+            a: 'Saul Tigh',
+            b: 'William Adama',
+            c: 'Kara Thrace'
+        },
+        correctAnswer: 'a',
+        answerDetail: 'Tigh, known for his drunkenness in the past, decided to take a couple drinks that morning. He had previously sectioned off his bottle into \'fingers\' a haphazard system of measuring alcohol; it can be said that this is an obvious behavior of an alcoholic.,'
+
+    },
 ]
 const createMainTag = document.createElement('main')
 const createMainContainerDiv = document.createElement('div')
