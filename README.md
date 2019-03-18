@@ -1,7 +1,5 @@
-Explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
-
 My Trivia Game was built with the follow technologies:
-Vanillia JavaScript
+JavaScript
 Bootstrap 4
 SCSS
 
